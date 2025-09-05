@@ -4,7 +4,9 @@
 .main-header {
     display: flex;
     height: 130px;
-    justify-content: center;
     align-items: center;
-    gap: 360px;
+    justify-content: space-between;
+    /* יותר רספונסיבי מאשר gap קבוע */
+    padding: 0 1.5rem;
+    gap: 1rem;
 }

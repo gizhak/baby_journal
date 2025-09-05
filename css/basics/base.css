@@ -3,18 +3,19 @@
 }
 
 body {
-    background-image: url('/img/background/back1.png');
+    /* לפני: background-image: url('/img/background/back1.png'); */
+    background-image: url('../../img/background/back1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
+    background-color: var(--clr-background);
+    /* fallback background color from palette */
 }
 
 html {
     font-family: lato-regular, serif;
-    color: var(--clr-primary-btn);
-    /* color: var(--clr-primary-toolbar); */
-    /* color: var(--clr-primary-title); */
+    color: var(--clr-primary-btn, #4A3F35);
     line-height: 1.6rem;
     text-shadow: 0 2px 4px rgba(210, 190, 190, 0.3);
 }

@@ -25,12 +25,14 @@
 }
 
 .main-nav a {
-    color: var(--color-light);
+    color: var(--clr-logo-dark-brown);
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: 600;
+
 }
 
 .main-nav a:hover {
-    color: var(--clr-hover);
-    text-decoration: underline;
+    color: var(--clr-font-hover);
+    /* text-decoration: underline; */
 }

@@ -1,23 +1,12 @@
 /* SETUP */
-@import url('./setup/typography.css');
 @import url('./setup/vars.css');
 
 /* BASICS */
 @import url('./basics/base.css');
-@import url('./basics/helpers.css');
 @import url('./basics/layout.css');
 @import url('./basics/main-layout.css');
-@import url('./basics/edite-layout.css');
-
-
 
 /* COMPONENTS */
 @import url('./components/main-logo.css');
 @import url('./components/main-nav.css');
 @import url('./components/main-header.css');
-@import url('./components/footer.css');
-@import url('./components/estilos.css');
-@import url('./components/zoom-effects.css');
-
-/* MQ */
-@import url('./setup/mq.css');

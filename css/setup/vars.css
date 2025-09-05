@@ -1,13 +1,20 @@
 :root {
     /* pallet */
 
-    --clr-logo-gold: #C9A66B;
-    /* Warm gold – main elements like the book icon and the "baby" text */
-    --clr-logo-dark-brown: #4A3F35;
-    /* Dark brown – outlines, key text, and strong accents */
+    --clr-logo-gold: #d2a860;
+    /* Warm gold — main elements like the book icon and the "baby" text */
+    --clr-logo-dark-brown: #9a6837;
+    /* Dark brown — outlines, key text, and strong accents */
     --clr-logo-off-white: #F8F5F0;
-    /* Off-white – light backgrounds, panels, and neutral areas */
+    /* Off-white — light backgrounds, panels, and neutral areas */
     --clr-logo-light-beige: #E6D8C3;
-    /* Light beige – secondary elements, arrows, and subtle highlights */
-
+    /* Light beige — secondary elements, arrows, and subtle highlights */
+    --clr-font-hover: #b69b87;
+    /* Aliases used across the project — map them to the logo palette */
+    --clr-primary-btn: var(--clr-logo-dark-brown);
+    --clr-primary-title: var(--clr-logo-dark-brown);
+    --clr-primary-toolbar-panel: var(--clr-logo-light-beige);
+    --color-light: var(--clr-logo-off-white);
+    --clr-hover: var(--clr-logo-gold);
+    --clr-background: var(--clr-logo-off-white);
 }
