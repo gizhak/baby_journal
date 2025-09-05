@@ -1,0 +1,7 @@
+/* MAIN-LAYOUT */
+
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 2fr;
+    min-height: 10vh;
+}

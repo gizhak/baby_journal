@@ -1,0 +1,10 @@
+/* MAIN-HEADER */
+
+
+.main-header {
+    display: flex;
+    height: 130px;
+    justify-content: center;
+    align-items: center;
+    gap: 360px;
+}

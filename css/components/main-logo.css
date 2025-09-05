@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* MAIN-LOGIN */
+
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    font-size: 25px;
+    margin-bottom: 15px;
+
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    height: 450px;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.login-container {
+    position: relative;
+    backdrop-filter: blur(4px);
+    width: 450px;
+    border: 2px solid var(--clr-primary-toolbar);
+    padding: 4.5em 2.5em 4em 2.5em;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    color: var(--clr-primary-toolbar-panel);
+}
+
+.login_title {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    display: flex;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    border-radius: 0 0 20px 20px;
+    /* background-color: aqua; */
+    height: 70px;
+    color: black;
+}
+
+.login_title span {
+    color: var(--clr-primary-toolbar-panel);
+    font-size: 30px;
+}
+
+.login_title::before {
+    content: "";
+    top: 0;
+    left: -30px;
+    position: absolute;
+    border-top-right-radius: 50%;
+    width: 30px;
+    height: 30px;
+    box-shadow: 15px 0 0 0 var(--clr-primary-toolbar-panel);
+    background: transparent;
+}
+
+.login_title::after {
+    content: "";
+    top: 0;
+    right: -30px;
+    position: absolute;
+    border-top-left-radius: 50%;
+    width: 30px;
+    height: 30px;
+    box-shadow: -15px 0 0 0 var(--clr-primary-toolbar-panel);
+    background: transparent;
+}
+
+.input_wrapper {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 20px;
+
+}
+
+
+#user {
+    margin-bottom: 10px;
+}
+
+/* .label {
+    position: absolute;
+    transition: 0.2s;
+    top: 15px;
+    left: 20px;
+} */
+
+.label {
+    position: static;
+    /* במקום absolute */
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--clr-primary-toolbar-panel);
+    display: block;
+}
+
+.input_field {
+    height: 25px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.input_field:focus~.label,
+.input_field:valid .label {
+    position: absolute;
+    font-size: 14px;
+    /* height: 100px; */
+    top: -10px;
+    left: 20px;
+    background-color: var(--clr-primary-toolbar-panel);
+    color: var(--clr-primary-toolbar);
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+
+.icon {
+    position: absolute;
+    font-size: 20px;
+    top: 18px;
+    right: 25px;
+}
+
+.login-btn {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    /* background-color: var(--clr-primary-toolbar-panel); */
+    color: var(--clr-primary-toolbar);
+    cursor: pointer;
+    margin-top: 15px;
+
+    /* הוסף את אלה: */
+    display: block;
+    outline: none;
+}
+
+.main-logo {
+    height: 90px;
+    width: auto;
+    margin-right: 20px;
+    display: block;
+    object-fit: contain;
+}
+
+/* הוסף hover effect: */
+.login-btn:hover {
+    background-color: var(--clr-primery-btn-hover);
+    transition: background-color 0.3s ease;
+}

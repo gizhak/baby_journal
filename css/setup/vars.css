@@ -1,0 +1,13 @@
+:root {
+    /* pallet */
+
+    --clr-logo-gold: #C9A66B;
+    /* Warm gold – main elements like the book icon and the "baby" text */
+    --clr-logo-dark-brown: #4A3F35;
+    /* Dark brown – outlines, key text, and strong accents */
+    --clr-logo-off-white: #F8F5F0;
+    /* Off-white – light backgrounds, panels, and neutral areas */
+    --clr-logo-light-beige: #E6D8C3;
+    /* Light beige – secondary elements, arrows, and subtle highlights */
+
+}
