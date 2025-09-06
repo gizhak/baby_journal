@@ -37,6 +37,16 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.refresh-button {
+    padding: 10px 20px;
+    background: var(--clr-logo-gold);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
 
 /* .input_wrapper.link {
     display: flex;

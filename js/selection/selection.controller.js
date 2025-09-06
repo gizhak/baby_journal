@@ -67,3 +67,34 @@ function onGetImages() {
             }
         })
 }
+
+function onRefreshImages() {
+    console.log('Force refreshing images...')
+
+    const container = document.querySelector('.images')
+    if (container) {
+        container.innerHTML = '<div style="text-align: center; padding: 20px;">מרענן תמונות...</div>'
+    }
+
+    forceRefreshImages()
+        .then(images => {
+            console.log('Images refreshed:', images)
+            renderImages(images)
+
+            // הודעה שהרענון הצליח
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'התמונות עודכנו!',
+                    timer: 1500,
+                    showConfirmButton: false
+                })
+            }
+        })
+        .catch(err => {
+            console.error('Error refreshing images:', err)
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;">שגיאה ברענון התמונות</div>'
+            }
+        })
+}
