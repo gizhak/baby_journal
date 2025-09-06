@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="main-body">
+<body onload="onInit()" class="main-body">
     <!-- adding background image -->
 
     <header class="main-header main-layout">
@@ -37,26 +37,33 @@
 
                     <div class="input_wrapper">
                         <label for="user" class="label">Username</label>
-                        <input type="text" id="user" class="input_field">
+                        <input type="text" id="user" class="input-field-name">
                         <i class="fa-regular fa-user icon"></i>
                     </div>
 
                     <div class="input_wrapper">
-                        <label for="pass" class="label">ID</label>
-                        <input type="text" id="pass" class="input_field">
+                        <label for="id" class="label">ID</label>
+                        <input type="text" id="id" class="input-field-id">
+                        <!-- <label for="pass" class="label">Password</label> -->
+                        <i class="fa-solid fa-lock icon"></i>
+                    </div>
+
+                    <div class="input_wrapper">
+                        <label for="link" class="label">Link from Doctor</label>
+                        <input type="text" id="link" class="input-field-link">
                         <!-- <label for="pass" class="label">Password</label> -->
                         <i class="fa-solid fa-lock icon"></i>
                     </div>
 
                     <div class="remember-forgot">
                         <div class="remember-me">
-                            <input type="checkbox" id="remember">
+                            <input type="checkbox" id="remember" class="checkbox">
                             <label for="remember">Remember Me</label>
                         </div>
                     </div>
 
                     <div class="input_wrapper">
-                        <input type="submit" class="login-btn" value="Login">
+                        <input type="submit" onclick="onLoginClicked()" class="login-btn" value="Login">
                     </div>
 
                 </div>
@@ -69,5 +76,14 @@
     </footer>
 
 </body>
+
+<script src="lib/util.service.js"></script>
+<script src="lib/swal.js"></script>
+<script src="lib/axios.js"></script>
+<script src="js/services/data.service.js"></script>
+
+<script src="js/selection/login.service.js"></script>
+<script src="js/selection/login.controller.js"></script>
+
 
 </html>
