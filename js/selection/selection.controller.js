@@ -1,5 +1,8 @@
 'use strict'
 
+let currentModalIndex = 0
+let allImages = []
+
 function onInit() {
     console.log('Selection page initialized')
     initSelectedImages() // מאתחל את התמונות הנבחרות
@@ -16,6 +19,7 @@ function renderImages(images) {
     }
 
     container.innerHTML = ''
+    allImages = images
 
     // יוצר כרטיס לכל תמונה
     images.forEach(imageData => {
@@ -29,6 +33,7 @@ function renderImages(images) {
         }
 
         card.onclick = () => selectImage(imageData)
+        card.ondblclick = () => openModal(imageData.index)
 
         const img = document.createElement('img')
         img.src = imageData.url
@@ -193,4 +198,58 @@ function onRefreshImages() {
                 container.innerHTML = '<div style="text-align: center; padding: 20px; color: red;">שגיאה ברענון התמונות</div>'
             }
         })
+}
+
+// פונקציה לפתיחת המודל
+function openModal(index) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalHeart = document.querySelector('.modal-heart');
+
+    currentModalIndex = index;
+    modal.style.display = "block";
+    modalImg.src = allImages[index].url;
+
+    // בדיקה אם התמונה נבחרה
+    if (isImageSelected(index)) {
+        modalHeart.classList.add('active');
+    } else {
+        modalHeart.classList.remove('active');
+    }
+}
+
+// סגירת המודל
+document.querySelector('.modal-close').onclick = function () {
+    document.getElementById('imageModal').style.display = "none";
+}
+
+// ניווט בין תמונות
+document.querySelector('.modal-prev').onclick = function () {
+    currentModalIndex = (currentModalIndex - 1 + allImages.length) % allImages.length;
+    openModal(currentModalIndex);
+}
+
+document.querySelector('.modal-next').onclick = function () {
+    currentModalIndex = (currentModalIndex + 1) % allImages.length;
+    openModal(currentModalIndex);
+}
+
+// לחיצה על הלב במודל
+document.querySelector('.modal-heart').onclick = function () {
+    selectImage(allImages[currentModalIndex]);
+    openModal(currentModalIndex); // רענון התצוגה
+}
+
+// ניווט עם מקלדת
+document.onkeydown = function (e) {
+    const modal = document.getElementById('imageModal');
+    if (modal.style.display === "block") {
+        if (e.key === "ArrowLeft") {
+            document.querySelector('.modal-prev').click();
+        } else if (e.key === "ArrowRight") {
+            document.querySelector('.modal-next').click();
+        } else if (e.key === "Escape") {
+            modal.style.display = "none";
+        }
+    }
 }

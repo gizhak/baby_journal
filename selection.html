@@ -32,12 +32,12 @@
                 <input type="link" id="link" class="input_field">
                 <button class="load-button" onclick="onGetImages()">Load</button>
             </div> -->
-            <button class="refresh-button" onclick="onRefreshImages()">Refresh</button>
+
         </div>
         <div class="image-selection">
 
             <div class="images">
-                <a href="" class="category-card">
+                <!-- <a href="" class="category-card">
                     <img src="img/001.jpg" alt="Animals">
                 </a>
                 <a href="" class="category-card">
@@ -57,10 +57,18 @@
                 </a>
                 <a href="" class="category-card">
                     <img src="img/001.jpg" alt="Nature">
-                </a>
+                </a> -->
             </div>
         </div>
 
+    </div>
+    <div id="imageModal" class="image-modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption"></div>
+        <div class="modal-heart">❤️</div>
+        <button class="modal-prev">‹</button>
+        <button class="modal-next">›</button>
     </div>
 
     <footer>

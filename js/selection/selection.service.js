@@ -16,6 +16,7 @@ const CACHE_EXPIRY_KEY = 'cacheExpiry'
 const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 שעות במילישניות
 
 
+
 const MAX_IMAGES = 9
 const SELECTED_IMAGES_KEY = 'selectedImages'
 let gSelectedImages = []
