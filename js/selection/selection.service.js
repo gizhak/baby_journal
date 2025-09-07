@@ -7,12 +7,18 @@ const ID = LOAD_USER.id
 const FINAL_IMAGE_URL = LOAD_USER.finalImageUrl
 const LINK = LOAD_USER.link
 const STORAGE_KEY = 'user'
+const STORAGE_CAROUSEL_KEY = 'userCarousel'
 
 const gCache = []
 
 const IMAGES_CACHE_KEY = 'cachedImages'
 const CACHE_EXPIRY_KEY = 'cacheExpiry'
 const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 שעות במילישניות
+
+
+const MAX_IMAGES = 9
+const SELECTED_IMAGES_KEY = 'selectedImages'
+let gSelectedImages = []
 
 console.log('Loaded User:', LOAD_USER)
 
@@ -170,4 +176,94 @@ function forceRefreshImages() {
         }
         return images
     })
+}
+
+// ________________________________________________
+function initSelectedImages() {
+    // טוען תמונות נבחרות מ-localStorage אם יש
+    const saved = localStorage.getItem(SELECTED_IMAGES_KEY)
+    if (saved) {
+        try {
+            gSelectedImages = JSON.parse(saved)
+            console.log(`Loaded ${gSelectedImages.length} selected images`)
+        } catch (e) {
+            gSelectedImages = []
+        }
+    }
+}
+
+function toggleImageSelection(imageData) {
+    const index = gSelectedImages.findIndex(img => img.index === imageData.index)
+
+    if (index > -1) {
+        // התמונה כבר נבחרה - מבטלים בחירה
+        gSelectedImages.splice(index, 1)
+        console.log(`Removed image ${imageData.index} from selection`)
+        saveSelectedImages()
+        return false // מחזיר שהתמונה לא נבחרה
+    } else {
+        // בודקים אם לא עברנו את המקסימום
+        if (gSelectedImages.length >= MAX_IMAGES) {
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'הגעת למקסימום',
+                    text: `ניתן לבחור עד ${MAX_IMAGES} תמונות`,
+                    confirmButtonText: 'הבנתי'
+                })
+            } else {
+                alert(`ניתן לבחור עד ${MAX_IMAGES} תמונות`)
+            }
+            return null // מחזיר null כשלא ניתן להוסיף
+        }
+
+        // מוסיפים את התמונה
+        gSelectedImages.push(imageData)
+        console.log(`Added image ${imageData.index} to selection`)
+        saveSelectedImages()
+        return true // מחזיר שהתמונה נבחרה
+    }
+}
+
+function saveSelectedImages() {
+    localStorage.setItem(SELECTED_IMAGES_KEY, JSON.stringify(gSelectedImages))
+    console.log(`Saved ${gSelectedImages.length} selected images`)
+}
+
+function getSelectedImages() {
+    return gSelectedImages
+}
+
+function getSelectedCount() {
+    return gSelectedImages.length
+}
+
+function isImageSelected(index) {
+    return gSelectedImages.some(img => img.index === index)
+}
+
+function clearSelection() {
+    gSelectedImages = []
+    localStorage.removeItem(SELECTED_IMAGES_KEY)
+    console.log('Selection cleared')
+}
+
+function goToCarousel() {
+    if (gSelectedImages.length === 0) {
+        if (window.Swal) {
+            Swal.fire({
+                icon: 'info',
+                title: 'לא נבחרו תמונות',
+                text: 'בחר לפחות תמונה אחת כדי להמשיך',
+                confirmButtonText: 'אישור'
+            })
+        } else {
+            alert('בחר לפחות תמונה אחת')
+        }
+        return
+    }
+
+    // שומרים ועוברים לקרוסלה
+    saveSelectedImages()
+    window.location.href = 'images.html'
 }
